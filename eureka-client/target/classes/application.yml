@@ -1,0 +1,33 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: client
+ # cloud:
+ #  stream:
+ #  bindings:
+ #  myInput:
+ #  group: groupB 消费者组 相同组的消费者只能一个消费者收到消息，不同组的都可以收到消息
+feign:
+  hystrix:
+    enabled: true #打开hystrix开关
+hystrix:
+  command:
+    feignTestClient#timeOutHello():  #default 使用default代表全局配置
+      execution:
+        thread:
+          timeoutInMilliseconds: 500 #超时时间
+        circuitBreaker:
+          requestVolumeThreadold: 1  #请求次数
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 30 #默认为30秒
+logging:
+  level:
+    com.netflix: DEBUG
+    
+provide: #客户端名称
+  ribbon: #命名空间
+    NFLoadBalancerRuleClassName: com.cloud.controller.config.MyRule  #(配置项和配置属性)通过配置文件来实现自定义负载均衡规则

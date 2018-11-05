@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: zuul
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  security:
+    enabled: false  #关闭安全认证，可查看监控端点 http://localhost:9000/routes
+zuul:
+  routes:
+    sale:
+      path: /sale/**
+      serviceId: client
+    routeTest:
+      path: /routeTest/163
+      url: http://www.163.com/  ＃简单路由
+    testForward:
+      path: /test/**
+      url: forward:/receive  #转发路由

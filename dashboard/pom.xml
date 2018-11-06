@@ -30,5 +30,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 			<version>1.5.3.RELEASE</version>
 		</dependency>
+
 	</dependencies>
 </project>

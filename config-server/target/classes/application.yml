@@ -1,0 +1,24 @@
+server:
+  port: 8888
+management:
+  security:
+    enabled: false
+spring:
+  profiles:
+    active: subversion
+  cloud:
+    config:
+      server:
+        svn:
+          uri: https://svn.fzyun.io/qmtgg/config-project
+          username: wangqi.dz1
+          password: Founder@2011!
+        default-label: test-label #该项指定默认读取配置的目录 默认读取trunk目录 文件命名必须要带- (first-test.yml)
+        health:
+          repositories:
+            test-service:
+              label: trunk  #如果没有health-test文件夹，会报down错误
+security:
+  user:
+    name: root
+    password: 123

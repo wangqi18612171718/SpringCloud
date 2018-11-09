@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      username: root
+      password: 123
+      #url: http://localhost:8888
+      discovery:
+        enabled: true
+        serviceId: config
+      profile: dev #读取config-client-dev.yml
+      name: config-client

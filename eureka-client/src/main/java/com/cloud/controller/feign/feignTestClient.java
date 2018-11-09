@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 
+ * feignClient 中的url是指的集群网关地址
  * @author wangqi
  *
  */
-@FeignClient(name = "provide",fallback = hystrixFallBack.class)
+@FeignClient(name = "user",fallback = hystrixFallBack.class,url="http://localhost:9000/getHello/")
 public interface feignTestClient {
 
 	@RequestMapping(method = RequestMethod.GET,value = "/getHello/{name}")
